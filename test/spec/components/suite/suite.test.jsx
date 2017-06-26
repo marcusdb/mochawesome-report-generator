@@ -68,6 +68,10 @@ describe('<Suite />', () => {
     expect(testList).to.have.lengthOf(1);
   });
 
+  it('renders a suite with hooks but no tests', () => {
+    //TOOD: write this test
+  });
+
   it('renders root suite', () => {
     const instProps = Object.assign({}, props, {
       suite: nestedSuite.suites

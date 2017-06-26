@@ -21,7 +21,7 @@ const Suite = ({ className, suite, enableChart, enableCode }) => {
       main={ isMain } />
   );
 
-  const testListComp = () => hasTests && (
+  const testListComp = () => (hasTests || !!beforeHooks.length || !!afterHooks.length) && (
     <TestList
       uuid={ uuid }
       tests={ tests }
@@ -35,7 +35,7 @@ const Suite = ({ className, suite, enableChart, enableCode }) => {
     'has-suites': hasSuites,
     'no-suites': !hasSuites,
     'has-tests': hasTests,
-    'no-tests': !hasTests,
+    'no-tests': !hasTests && !beforeHooks.length && !afterHooks.length,
     'has-passed': hasPasses,
     'has-failed': hasFailures,
     'has-pending': hasPending,
