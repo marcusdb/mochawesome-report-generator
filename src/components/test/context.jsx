@@ -62,7 +62,7 @@ class TestContext extends Component {
 
   renderContextContent = (content, title, highlight = false) => {
     // Base64
-    if (base64RegEx.test(content)) {
+    if (isString(content) && content.indexOf('data:image')===0) {
       return this.renderBase64(content, title);
     }
 
@@ -78,7 +78,7 @@ class TestContext extends Component {
 
     // Simple string
     if (isString(content)) {
-      return <CodeSnippet className={ cx('code-snippet') } code={ content } highlight={ false } />;
+      return <CodeSnippet className={ cx('code-snippet') } code={ base64RegEx.test(content) } highlight={ false } />;
     }
 
     // All other types (primitives, objects, arrays...)

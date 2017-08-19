@@ -51270,7 +51270,7 @@ var TestContext = (_temp2 = _class = function (_Component) {
       var highlight = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
       // Base64
-      if (base64RegEx.test(content)) {
+      if ((0, _isString2.default)(content) && content.indexOf('data:image') === 0) {
         return _this.renderBase64(content, title);
       }
 
@@ -51286,7 +51286,7 @@ var TestContext = (_temp2 = _class = function (_Component) {
 
       // Simple string
       if ((0, _isString2.default)(content)) {
-        return _react2.default.createElement(_test.CodeSnippet, { className: cx('code-snippet'), code: content, highlight: false });
+        return _react2.default.createElement(_test.CodeSnippet, { className: cx('code-snippet'), code: base64RegEx.test(content), highlight: false });
       }
 
       // All other types (primitives, objects, arrays...)
